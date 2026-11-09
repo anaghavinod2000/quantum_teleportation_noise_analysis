@@ -1,0 +1,6 @@
+title: Quantum Teleportation and Noise Analysis Using Qiskit
+theme: jekyll-theme-primer
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
