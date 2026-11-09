@@ -81,19 +81,19 @@ The IBM course is acknowledged as the educational source for the original telepo
 
 A general single-qubit pure state is represented as:
 
-\[
-|\psi\rangle = \alpha|0\rangle+\beta|1\rangle
-\]
+$$
+|\psi\rangle = \alpha|0\rangle + \beta|1\rangle
+$$
 
 where:
 
-\[
-|\alpha|^2+|\beta|^2=1
-\]
+$$
+|\alpha|^2 + |\beta|^2 = 1
+$$
 
-The coefficients \(\alpha\) and \(\beta\) are complex probability amplitudes.
+The coefficients $\alpha$ and $\beta$ are complex probability amplitudes.
 
-A qubit can exist in a superposition of the computational basis states \(|0\rangle\) and \(|1\rangle\).
+A qubit can exist in a superposition of the computational basis states $\vert 0\rangle$ and $\vert 1\rangle$.
 
 ### 5.2 Quantum Entanglement
 
@@ -101,10 +101,9 @@ Quantum entanglement is a phenomenon in which two or more qubits share correlate
 
 The teleportation protocol uses an entangled Bell pair:
 
-\[
-|\Phi^+\rangle =
-\frac{|00\rangle+|11\rangle}{\sqrt{2}}
-\]
+$$
+|\Phi^+\rangle = \frac{|00\rangle + |11\rangle}{\sqrt{2}}
+$$
 
 Alice and Bob share this entangled pair before the teleportation process begins.
 
@@ -136,18 +135,15 @@ The project investigates three input states:
 
 | State | Description |
 |---|---|
-| \(|0\rangle\) | Computational basis state |
-| \(|1\rangle\) | Computational basis state |
-| \(|+\rangle\) | Equal superposition state |
+| $\vert 0\rangle$ | Computational basis state |
+| $\vert 1\rangle$ | Computational basis state |
+| $\vert +\rangle$ | Equal superposition state |
 
 The general state is prepared using the Qiskit U gate:
 
-\[
-|\psi\rangle =
-\cos\left(\frac{\theta}{2}\right)|0\rangle
-+
-e^{i\phi}\sin\left(\frac{\theta}{2}\right)|1\rangle
-\]
+$$
+|\psi\rangle = \cos\left(\frac{\theta}{2}\right)|0\rangle + e^{i\phi}\sin\left(\frac{\theta}{2}\right)|1\rangle
+$$
 
 These known input states provide a controlled way to test the teleportation circuit.
 
@@ -172,6 +168,7 @@ Real quantum processors introduce physical imperfections, including:
 This execution method provides an opportunity to investigate quantum teleportation on actual quantum hardware.
 
 **Requirements:**
+
 - IBM Quantum account
 - Valid IBM Quantum API token
 - Access to an available compatible backend
@@ -181,7 +178,7 @@ The hardware implementation requires support for dynamic circuits and classical 
 
 ### Method 2: Qiskit Aer Simulator
 
-<badge color="success">No IBM account required</badge>
+![No IBM account required](https://img.shields.io/badge/No%20IBM%20account-required-success)
 
 The project also uses Qiskit Aer, a high-performance quantum circuit simulator.
 
@@ -214,17 +211,16 @@ Depolarizing noise represents a quantum channel that introduces errors by mixing
 
 It can be represented as:
 
-\[
-\mathcal{E}(\rho) =
-(1-p)\rho+p\frac{I}{2^n}
-\]
+$$
+\mathcal{E}(\rho) = (1-p)\rho + p\frac{I}{2^n}
+$$
 
 where:
 
-- \(\rho\) is the original density matrix.
-- \(I\) is the identity matrix.
-- \(p\) is the depolarizing noise parameter.
-- \(n\) is the number of qubits.
+- $\rho$ is the original density matrix.
+- $I$ is the identity matrix.
+- $p$ is the depolarizing noise parameter.
+- $n$ is the number of qubits.
 
 In this project, depolarizing errors are applied to:
 
@@ -237,18 +233,14 @@ Readout errors occur when a measurement returns an incorrect classical result.
 
 For example:
 
-- A qubit in state \(|0\rangle\) may be measured as `1`.
-- A qubit in state \(|1\rangle\) may be measured as `0`.
+- A qubit in state $\vert 0\rangle$ may be measured as `1`.
+- A qubit in state $\vert 1\rangle$ may be measured as `0`.
 
 The project uses a symmetric readout error model:
 
-\[
-P(0\rightarrow1)=p
-\]
-
-\[
-P(1\rightarrow0)=p
-\]
+$$
+P(0 \rightarrow 1) = p, \qquad P(1 \rightarrow 0) = p
+$$
 
 This allows the effect of measurement imperfections on teleportation verification to be investigated.
 
@@ -264,7 +256,7 @@ For each noise level, the teleportation circuit is executed for all three input 
 
 The resulting fidelity values are recorded and compared.
 
-The same parameter \(p\) is used as a convenient control for both gate and readout noise. It should not be interpreted as a calibrated hardware error rate.
+The same parameter $p$ is used as a convenient control for both gate and readout noise. It should not be interpreted as a calibrated hardware error rate.
 
 ## 9. Fidelity Analysis
 
@@ -272,11 +264,9 @@ Fidelity measures how closely a received quantum state matches its intended targ
 
 For pure states:
 
-\[
-F =
-|\langle\psi_{\text{target}}|
-\psi_{\text{received}}\rangle|^2
-\]
+$$
+F = \left|\langle\psi_{\text{target}}|\psi_{\text{received}}\rangle\right|^2
+$$
 
 In this project, Bob's state is verified by applying the inverse of Alice's known state-preparation operation before measurement.
 
@@ -284,11 +274,9 @@ If Bob has received the correct state, the verification measurement should ideal
 
 The estimated verification fidelity is calculated as:
 
-\[
-F_{\text{estimated}} =
-\frac{\text{Successful verification outcomes}}
-{\text{Total measurement shots}}
-\]
+$$
+F_{\text{estimated}} = \frac{\text{Successful verification outcomes}}{\text{Total measurement shots}}
+$$
 
 This is a measurement-based verification estimate for the known input states used in the experiment. It is not full quantum state tomography.
 
@@ -393,7 +381,7 @@ For IBM hardware execution:
 6. Enable notebook access to that secret.
 7. Set `RUN_IBM = True` in the optional hardware execution cell.
 
-Never hardcode your API token into the notebook or commit it to GitHub.
+> **Warning:** Never hardcode your API token into the notebook or commit it to GitHub.
 
 Hardware execution depends on account access, backend availability, and support for dynamic circuits.
 
