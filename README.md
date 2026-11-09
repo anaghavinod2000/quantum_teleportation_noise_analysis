@@ -459,7 +459,7 @@ Additional references:
 
 MSc Physics | Quantum Computing | Quantum Information
 
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/anaghavinod2000
 
 ## License
 
